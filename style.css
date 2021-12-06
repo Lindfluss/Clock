@@ -8,12 +8,18 @@ html{
   background: url(tuman.jpg);
   display: flex;
   justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+  text-align: center;
 }
 
 body{
-  color: #f0f8ff;  
+  color: #f0f8ff;
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-top: 70%;
 }
 
 .clock{
@@ -22,7 +28,6 @@ body{
   height: 320px;
   border-radius: 50%;
   border: 4px solid #1a5d7a;
-
 }
 
 .clock .number {
@@ -92,9 +97,61 @@ body{
 }
 
 .date-time{
-  display: flex;
-  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  left: calc(50% - 150px);
   font-family: 'Anonymous Pro', monospace;
   font-size: 18px;
-  margin-top: auto;
+}
+
+.timer{
+  margin: 70px 0;
+  font-family: 'Anonymous Pro', monospace;
+}
+.timer-time{
+  display: block;
+  font-size: 30px;
+  margin: 20px 0 20px 5px;
+}
+.timer input[type="number"] {
+  color: #f0f8ff;
+	background-color:rgba(40, 167, 167, 0.322);
+	outline: none;
+  text-align: center;
+	height: 40px;
+	text-indent: 10px;
+	display: block;
+	width: 70px;
+	box-sizing: border-box;
+	border: 1px;
+	font-size: 14px;
+	border-radius: 3px;
+  padding: 0 7px 0 0;
+  margin: 0 0 20px 125px;
+}
+.timer input[type="number"]::-webkit-outer-spin-button,
+.timer input[type="number"]::-webkit-inner-spin-button {
+	display: none;
+}
+
+button{
+  font-family: 'Fontawesome';
+  font-size: 35px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin: 0 10px 0 10px;
+}
+
+.timer .play{
+  color: rgba(88, 185, 93, 0.5);
+}
+
+.timer .pause{
+  color: rgba(253, 253, 253, 0.6);
+}
+
+.timer .reset{
+  color: rgba(167, 50, 50, 0.6);
 }

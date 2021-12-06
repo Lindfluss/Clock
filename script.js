@@ -1,3 +1,4 @@
+// Часы
 function setClock() {
   const hourHand = document.querySelector('[data-hour-hand]')
   const minuteHand = document.querySelector('[data-minute-hand]')
@@ -15,10 +16,10 @@ function setRotation(element, rotationRatio) {
   element.style.setProperty('--rotation', rotationRatio * 360)
 }
 
-setClock()
 
+// Электронные часы
 function setTime(){
-  const time = document.querySelector('#time');
+  const time = document.querySelector('.time');
 
   let date = new Date();
   let hours = date.getHours();
@@ -43,6 +44,57 @@ function setTime(){
 
   time.textContent = hours + ":" + minutes + ":" + seconds + " " + days[dayName] + ", " + dayNum + " " + mounths[mounth];
 }
+
+// Таймер
+let isPaused = false;
+let count = 0;
+let currentTimer = undefined;
+
+setTimerBtn = document.querySelector('#submit');
+pauseBtn = document.querySelector('#pause');
+clearBtn = document.querySelector('#clear');
+
+counterText = document.querySelector('#numb');
+counterLabel = document.querySelector('#time');
+
+setTimerBtn.addEventListener('click', ()=>{
+  if (currentTimer !== undefined){
+    clearInterval(currentTimer);
+  }
+  count = +counterText.value;
+  setTimer();
+})
+
+pauseBtn.addEventListener('click', () => { pause(); })
+clearBtn.addEventListener('click', () => { unsetTimer(); })
+
+function setTimer () { 
+  currentTimer = setInterval(()=>{
+    if(!isPaused){
+      if (count <= 0){
+        unsetTimer();
+        alarm();
+      }
+      counterLabel.textContent = count;
+      count--;
+    }
+  },1000)
+}
+
+function unsetTimer(){
+  clearInterval(currentTimer);
+}
+
+function pause(){
+  isPaused = !isPaused;
+}
+
+function alarm(){
+  const audio = new Audio();
+  audio.src = 'alarm.wav';
+  audio.play();
+}
+
 setInterval(()=>{
   setTime()
   setClock()
